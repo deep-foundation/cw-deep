@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "StateResponse",
+  "type": "object",
+  "required": [
+    "deeplinks",
+    "deleted_deeplinks",
+    "named_deeplinks"
+  ],
+  "properties": {
+    "deeplinks": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": [
+          {
+            "type": "integer",
+            "format": "uint64",
+            "minimum": 0.0
+          },
+          {
+            "$ref": "#/definitions/DeeplinkState"
+          }
+        ],
+        "maxItems": 2,
+        "minItems": 2
+      }
+    },
+    "deleted_deeplinks": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "format": "uint64",
+        "minimum": 0.0
+      }
+    },
+    "named_deeplinks": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/definitions/DeeplinkState"
+          }
+        ],
+        "maxItems": 2,
+        "minItems": 2
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "DeeplinkState": {
+      "type": "object",
+      "required": [
+        "from",
+        "to",
+        "type"
+      ],
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
